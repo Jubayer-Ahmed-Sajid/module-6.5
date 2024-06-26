@@ -81,6 +81,19 @@ void insert_at_head(Node *&head, int val)
          << endl;
 }
 
+void insert_at_certain_position(Node *head, int pos, int val)
+{
+    Node *tmp = head;
+    Node *newNode = new Node(val);
+    for (int i = 1; i <= pos - 1; i++)
+    {
+        tmp = tmp->next;
+    }
+    newNode->next = tmp->next;
+    tmp->next = newNode;
+    cout<<endl<<endl<<"Inserted at position"<<" "<<pos<<endl<<endl;
+}
+
 int main()
 {
     int op;
@@ -118,7 +131,19 @@ int main()
             cin >> val;
             insert_at_head(head, val);
         }
-
+        if (op == 4)
+        {
+            int pos;
+            cout << "Enter position: ";
+            cin >> pos;
+            int val;
+            cout << "Enter value: ";
+            cin >> val;
+            if(pos == 0){
+                insert_at_head(head,val);
+            }
+           else insert_at_certain_position(head, pos, val);
+        }
         // Programme termination
         else if (op == 7)
         {
