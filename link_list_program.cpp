@@ -59,6 +59,28 @@ void display_list(Node *head)
          << endl;
 }
 
+void insert_at_head(Node *&head, int val)
+{
+    Node *newNode = new Node(val);
+
+    if (head == NULL)
+    {
+        head = newNode;
+        cout << endl
+             << endl
+             << "Inserted at head!!" << endl
+             << endl;
+        return;
+    }
+    Node *tmp = head;
+    head = newNode;
+    head->next = tmp;
+    cout << endl
+         << endl
+         << "Inserted at head!!" << endl
+         << endl;
+}
+
 int main()
 {
     int op;
@@ -67,8 +89,8 @@ int main()
     {
         cout << "Option 1: Insert at tail" << endl;
         cout << "Option 2: Display List" << endl;
-        cout << "Option 3: Insert at certain position" << endl;
-        cout << "Option 4: Insert at head" << endl;
+        cout << "Option 3: Insert at head" << endl;
+        cout << "Option 4: Insert at certain position" << endl;
         cout << "Option 5: Delete at certain postion" << endl;
         cout << "Option 6: Delete Head" << endl;
         cout << "Option 7: Terminate" << endl;
@@ -87,6 +109,17 @@ int main()
         {
             display_list(head);
         }
+
+        else if (op == 3)
+        {
+            int val;
+            cout << endl
+                 << "Enter value: ";
+            cin >> val;
+            insert_at_head(head, val);
+        }
+
+        // Programme termination
         else if (op == 7)
         {
             break;
