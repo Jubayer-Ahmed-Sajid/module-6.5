@@ -91,7 +91,24 @@ void insert_at_certain_position(Node *head, int pos, int val)
     }
     newNode->next = tmp->next;
     tmp->next = newNode;
-    cout<<endl<<endl<<"Inserted at position"<<" "<<pos<<endl<<endl;
+    cout << endl
+         << endl
+         << "Inserted at position" << " " << pos << endl
+         << endl;
+}
+
+void delete_position(Node *head, int pos)
+{
+    Node *tmp = head;
+    for (int i = 1; i <= pos - 1; i++)
+    {
+        tmp = tmp->next;
+    }
+    Node *deleteNode = tmp->next;
+    tmp->next = tmp->next->next;
+    delete deleteNode;
+    
+    cout<<endl<<endl<<"Node deleted at postion!!"<<" "<<pos<<endl<<endl;
 }
 
 int main()
@@ -139,10 +156,22 @@ int main()
             int val;
             cout << "Enter value: ";
             cin >> val;
-            if(pos == 0){
-                insert_at_head(head,val);
+            if (pos == 0)
+            {
+                insert_at_head(head, val);
             }
-           else insert_at_certain_position(head, pos, val);
+            else
+                insert_at_certain_position(head, pos, val);
+        }
+
+        else if (op == 5)
+        {
+            int pos;
+            cout << endl
+                 << endl
+                 << "Enter postion: ";
+            cin >> pos;
+            delete_position(head, pos);
         }
         // Programme termination
         else if (op == 7)
